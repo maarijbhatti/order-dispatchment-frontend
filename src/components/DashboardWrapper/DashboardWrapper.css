@@ -1,0 +1,32 @@
+.dashBoard-container {
+  /* display: flex;
+  flex-direction: row;
+
+  background-color: tomato; */
+  min-height: 100vh;
+}
+
+.dashBoard-content {
+  /* display: flex;
+  height: 100px;
+  width: 100px; */
+  background-color: tomato;
+}
+
+html,
+body {
+  margin: 0px;
+  height: 100%;
+}
+
+.section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-fill {
+  flex: 1 1 auto;
+}
