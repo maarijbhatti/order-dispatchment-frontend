@@ -1,11 +1,12 @@
+import axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+//axios.defaults.withCredentials = true
 function useLogin(): any {
     const navigate = useNavigate();
     const [showPass, setShowPass] = useState(false)
 
-    function login(values) {
+    const login = async (values) => {
         let errors = [];
 
         Object.keys(values).forEach((key) => {
@@ -14,23 +15,30 @@ function useLogin(): any {
         });
         try {
             if (!errors[0]) {
-                // const sss = fetch('http://34.71.36.69/login', {
-                //     method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                //     mode: 'cors', // no-cors, *cors, same-origin
-                //     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                //     headers: {
-                //         'Content-Type': 'application/json'
-                //     },
-                //     referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-                //     body: JSON.stringify(values) // body data type must match "Content-Type" header
-                // })
-                // console.log('sakljdanskdn', sss)
-                navigate('/dashboard')
+                const res = await axios.post('http://34.71.36.69/login', { ...values, username: values.email }
+                    // ,
+                    //     {
+                    //         headers: {
+                    //             'Access-Control-Allow-Origin': '*',
+                    //             'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                    //         }
+                    //     }
+                )
+                console.log('qq232q3erasdasdasrro', res)
+                if (res.data.status) {
+                    // const res2 = await axios.post('http://34.71.36.69', {})
+                    // console.log('erasdasdasrro', res2)
+
+                    navigate('/orders')
+                }
+                else
+                    alert(res.data.message)
+                //  navigate('/dashboard')
             }
 
             return { errors };
         } catch (error) {
-
+            console.log('errro', error)
             return { errors };
         }
     }

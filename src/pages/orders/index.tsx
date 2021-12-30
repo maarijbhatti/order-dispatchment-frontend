@@ -1,10 +1,16 @@
 
 import DashboardWrapper from "../../components/DashboardWrapper";
 import style from "./Orders.module.css";
-import { Button } from 'react-bootstrap';
+import { Button, Dropdown, DropdownButton, Form } from 'react-bootstrap';
 import { Box, Stack, Text, Flex } from '@chakra-ui/layout';
+import { Select } from "@chakra-ui/react";
+import useDashboard from "../../hooks/useDashboard";
+// import Dropdown from 'react-dropdown';
+// import 'react-dropdown/style.css';
 
 export default function Orders() {
+
+  useDashboard()
 
   return (
     <DashboardWrapper>
@@ -23,16 +29,38 @@ export default function Orders() {
           </div>
         </div>
         <div className={`${style.filterSection} bg-purple`}>
-          <input className="style2-input form-control font-xss ls-3 input-field" />
+          {/* <input placeholder='Search orders...' className={`${style.orderFilterInput} `} /> */}
+          <Form.Control type="email" placeholder="Enter email" className={`${style.orderFilterInput} `} />
           <div className="row" style={{ marginTop: '15px' }}>
             <div className="col-lg-9" >
               <Box mt="auto">
-                <Stack spacing="15" direction="row" >
-                  <input className="style2-input form-control font-xss ls-3 input-field" />
-                  <input className="style2-input form-control font-xss ls-3 input-field" />
-                  <input className="style2-input form-control font-xss ls-3 input-field" />
-                  <input className="style2-input form-control font-xss ls-3 input-field" />
+                <Stack spacing={15} direction={"row"} className={style.orderFilter} >
+                  <Form.Select className={`${style.orderFilterInput} `}>
+                    <option>All shops</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </Form.Select>
+                  <Form.Select className={`${style.orderFilterInput} `}>
+                    <option>All payment statusses</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </Form.Select>
+                  <Form.Select className={`${style.orderFilterInput} `}>
+                    <option>All order statusess</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </Form.Select>
+                  <Form.Select className={`${style.orderFilterInput} `}>
+                    <option>All order dates</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </Form.Select>
                 </Stack>
+
               </Box>
             </div>
             <div className="col-lg-3">
@@ -55,8 +83,14 @@ export default function Orders() {
             </div>
           </div>
           <div className={`${style.createNewOrder} col-xl-3 col-lg-4 col-md-4 col-sm-6`} >
-            <input className="style2-input form-control font-xss ls-3 input-field" />
+            <Form.Select className={`${style.orderFilterInput} `}>
+              <option>Short by order number</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </Form.Select>
           </div>
+
         </div>
 
         {[1, 2, 3, 4, 5, 6, 7].map(() => <div className={style.orderList}>

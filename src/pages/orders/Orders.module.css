@@ -38,6 +38,19 @@
   font-size: 17px;
 }
 
+.orderFilter {
+  justify-content: space-between;
+}
+
+.orderFilterInput {
+  flex-grow: 1;
+  box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.2);
+  height: 50px;
+  border-radius: 5px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
 .orderListField {
   border-left-width: 0px;
   border-top-width: 0px;
